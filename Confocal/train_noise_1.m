@@ -1,0 +1,20 @@
+load('a_trainpoints.mat');
+maks = max(A,[],'all');
+A = A/maks;
+A = 256*A;
+gridd = 120;   
+options.overwrite = true;
+%A = A(1:120,1:120,1:15);
+saveastiff(uint8(A),'A.tif',options);
+truth.img='A.tif';
+truth.pix=[57 57 140];
+
+conf.pix=[57 57 140];
+conf.psf=[78 78 294];
+sample='brugdet.tif';
+%sample.noise=[1 1 1]';
+%sample.sig=100;
+[res,truth,sample]=confocal_generator(truth,conf,sample);
+ar =res.stack;
+%endmat2 = max(res.stack,[],3);
+save('train_noise_1.mat','ar');

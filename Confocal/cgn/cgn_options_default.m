@@ -1,0 +1,29 @@
+function opt = cgn_options_default
+% Provide the options to analyse
+%
+% They are loaded by cgn_option_load.m,
+% which also check for a local 'cgn_options.m'
+%
+%% Copyright
+% This file is part of ConfocalGN, a generator of confocal microscopy images
+% Serge Dmitrieff, Nédélec Lab, EMBL 2015-2017
+% https://github.com/SergeDmi/ConfocalGN
+% Licenced under GNU General Public Licence 3
+
+
+%% Options for image segmentation
+% Filter to be used before thresholding
+opt.segmentation.filt             = [1 1 0];
+% Indexes of items to be kept when loading the stack
+opt.segmentation.ix               = [];
+
+%% Options for sample segmentation
+% Filter to be used before thresholding
+opt.sampling.filt                 = [1 1 0];
+% Indexes of items to be kept when loading the stack
+opt.sampling.ix                   = 9:16;
+
+%% Misc
+opt.verbose                       = 1;
+
+return
